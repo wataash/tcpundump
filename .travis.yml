@@ -1,0 +1,16 @@
+# https://docs.travis-ci.com/user/languages/go/
+# https://github.com/codecov/example-go
+
+language: go
+
+go:
+  - "1.10"
+
+before_install:
+  - go get -t -v ./...
+
+script:
+  - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

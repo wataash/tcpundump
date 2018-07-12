@@ -1,5 +1,9 @@
 # tcpundump
 
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+[![Build Status](https://travis-ci.org/wataash/tcpundump.svg?branch=master)](https://travis-ci.org/wataash/tcpundump)
+[![codecov](https://codecov.io/gh/wataash/tcpundump/branch/master/graph/badge.svg)](https://codecov.io/gh/wataash/tcpundump)
+
 WIP
 
 ```sh
