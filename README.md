@@ -8,17 +8,18 @@ WIP
 
 ```sh
 # example 1
-ssh host 'tcpdump -i eth0 -x' | tcpundump | wireshark -k - 
-# stderr: tcpundump: neither -w nor `command` specified, reading from stdin.
-# -q to supress
+tcpundump > undumped.pcapng
+# => tcpundump: reading input...
+# paste hex dump, ctrl-D
 
 # example 2
-mkfifo dump
-tcpundump --type juniper -w dump.pcapng -- ssh -p 10022 juniper
-wireshark -k - < dump.pcapng
+ssh wsh@wataash.com 'tcpdump -i eth0 -xx' | tcpundump | wireshark -k -
+# => tcpundump: reading input...
+# # -q to surpress message
 
 # example 3
-
+tcpundump -w dump.pcapng -- ssh wsh@wataash.com
+tcpdump -r undumped.pcapng
 ```
 
 usage

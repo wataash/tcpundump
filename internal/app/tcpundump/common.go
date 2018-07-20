@@ -35,28 +35,28 @@ var unreachable = errors.New("unreachable")
 
 // TODO: move to dump_type.go?
 const (
-	_                dumpType = iota
-	cisco
-	juniper
-	juniper2
-	seil
-	tcpdump_old_TODO
-	tcpdumpX          // -x
-	tcpdumpXX         // -X
-	unknown
+	_                  dumpType = iota
+	dtCisco
+	dtJuniper
+	dtJuniper2
+	dtSeil
+	dtTcpdump_old_TODO
+	dtTcpdumpX          // -x
+	dtTcpdumpXX           // -X
+	dtUnknown
 )
 
 // want to be a const
 var regexInfer = map[dumpType]string{
 	// TODO audit
 	// (8 SP)0x0000:  1100 50b5 00aa 0021 4510 00a8 ce7d 4000  ..P....!E....}@.
-	seil:     ` {8}0x\d{3}0:  [[:xdigit:]]`,
-	tcpdumpX: `\t0x\d{3}0:  [[:xdigit:]]`,
+	dtSeil:     ` {8}0x\d{3}0:  [[:xdigit:]]`,
+	dtTcpdumpX: `\t0x\d{3}0:  [[:xdigit:]]`,
 }
 
 var funcHexPos = map[dumpType]func(line string) ([]colByte, error){
-	seil:     lineToColsByteSeil,
-	tcpdumpX: lineToHexPositionsTcpdumpX,
+	dtSeil:     lineToColsByteSeil,
+	dtTcpdumpX: lineToHexPositionsTcpdumpX,
 }
 
 // ----------------------------------------------------------------------------
