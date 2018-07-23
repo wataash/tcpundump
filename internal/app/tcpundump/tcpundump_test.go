@@ -5,13 +5,13 @@ import "fmt"
 func ExampleTcpundump() {
 	var args Args
 
-	args = Args{DumpType: "", FileRead: "foo", Command: []string{"baz"}}
+	args = Args{FileRead: "foo", Command: []string{"baz"}}
 	fmt.Println(Tcpundump(args))
 
-	args = Args{DumpType: "", Command: []string{"baz"}}
+	args = Args{Command: []string{"baz"}}
 	fmt.Println(Tcpundump(args))
 
-	args = Args{DumpType: "", FileRead: "non-exist-fie"}
+	args = Args{FileRead: "non-exist-fie"}
 	fmt.Println(Tcpundump(args))
 
 	// Output:
