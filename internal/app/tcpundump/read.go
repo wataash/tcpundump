@@ -69,18 +69,5 @@ func readLine(rd io.Reader) ([]byte, error) {
 
 	// TODO: if too long line (65536 chars?), descard it
 
-	for {
-		line, err := r.ReadBytes('\n')
-		if err != nil && err != io.EOF {
-			return []byte{}, err
-		}
-
-		// TODO: test EOF: with file, terminal ctrl-D
-
-		if err == io.EOF && len(line) == 0 {
-			return []byte{}, nil
-		}
-
-		return line, nil
-	}
+	return r.ReadBytes('\n')
 }

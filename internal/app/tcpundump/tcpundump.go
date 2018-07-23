@@ -77,7 +77,13 @@ func Tcpundump(args Args) error {
 
 	for {
 		lineBytes, err := readLine(r)
-		_ = err // TODO
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+
 		// TODO f = getFile(cobra options)
 		// line := f.ReadAll()
 
