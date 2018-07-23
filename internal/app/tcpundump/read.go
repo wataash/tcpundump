@@ -52,7 +52,6 @@ func openCmdReader(command []string) (*cmdReader, error) {
 
 	cr := &cmdReader{cmdIn, cmdOut, cmdErr}
 
-	// TODO here
 	err = cmd.Start()
 	if err != nil {
 		cr.Close()
