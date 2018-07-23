@@ -25,8 +25,13 @@ func TestTcpundump(t *testing.T) {
 
 	scenario = "open non-exist-fie: no such file or directory"
 	args = Args{FileRead: "non-exist-fie"}
-	fmt.Println(Tcpundump(args))
 	if Tcpundump(args).Error() != scenario {
 		fmt.Errorf(scenario)
 	}
+
+	// test read.go
+
+	args = Args{FileWrite: "tmp.pcapng", Command: []string{"echo", "foo"}}
+	Tcpundump(args)
+	fmt.Println("foo")
 }
