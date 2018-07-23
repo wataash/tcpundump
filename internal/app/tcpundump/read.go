@@ -78,12 +78,9 @@ func readLine(rd io.Reader) ([]byte, error) {
 		// TODO: test EOF: with file, terminal ctrl-D
 
 		if err == io.EOF && len(line) == 0 {
-			break
+			return []byte{}, nil
 		}
 
 		return line, nil
 	}
-
-	// TODO: reachable?
-	return []byte{}, nil
 }
