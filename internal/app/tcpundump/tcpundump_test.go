@@ -29,7 +29,7 @@ func TestTcpundump(t *testing.T) {
 		fmt.Errorf(scenario)
 	}
 
-	// test read.go
+	// test cmd_reader.go
 
 	args = Args{FileWrite: "tmp.pcapng", Command: []string{"echo", "foo"}}
 	Tcpundump(args)
