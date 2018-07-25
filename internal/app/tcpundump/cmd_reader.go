@@ -4,7 +4,6 @@ import (
 	"io"
 	"os"
 	"os/exec"
-	"bufio"
 )
 
 // an io.ReadCloser
@@ -59,14 +58,4 @@ func openCmdReader(command []string) (*cmdReader, error) {
 	}
 
 	return cr, nil
-}
-
-func readLine(rd io.Reader) ([]byte, error) {
-	// ioutil.ReadAll()
-
-	r := bufio.NewReader(rd)
-
-	// TODO: if too long line (65536 chars?), descard it
-
-	return r.ReadBytes('\n')
 }

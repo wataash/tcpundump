@@ -2,6 +2,7 @@
 package tcpundump
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"os"
@@ -62,6 +63,16 @@ func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 	}
 
 	return r, w, dt, nil
+}
+
+func readLine(rd io.Reader) ([]byte, error) {
+	// ioutil.ReadAll()
+
+	r := bufio.NewReader(rd)
+
+	// TODO: if too long line (65536 chars?), descard it
+
+	return r.ReadBytes('\n')
 }
 
 // --type juniper -r test/data/tcpdump_seil.txt -w dump.pcapng -- ssh -p 10022 juniper
