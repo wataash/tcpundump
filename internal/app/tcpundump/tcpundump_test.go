@@ -26,5 +26,4 @@ func TestTcpundump(t *testing.T) {
 
 	args = Args{FileWrite: "tmp.pcapng", Command: []string{"echo", "foo"}}
 	Tcpundump(args)
-	fmt.Println("foo")
 }

@@ -39,7 +39,6 @@ func (cr *cmdReader) Read(p []byte) (int, error) {
 }
 
 func (cr *cmdReader) Close() error {
-	_ = os.Stdout.Close()
 	// TODO: step in
 	_ = cr.cmdIn.Close()
 	_ = cr.cmdOut.Close()

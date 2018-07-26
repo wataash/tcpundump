@@ -60,6 +60,17 @@ func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 	return r, w, dt, nil
 }
 
+// must be deferred after openArgs()
+func closeIO(r io.ReadCloser, w io.WriteCloser) {
+	// don't close stdio otherwise testing will terminated
+	if r != os.Stdin {
+		_ = r.Close()
+	}
+	if w != os.Stdout {
+		_ = w.Close()
+	}
+}
+
 func readLine(rd io.Reader) ([]byte, error) {
 	// ioutil.ReadAll()
 
@@ -76,8 +87,7 @@ func Tcpundump(args Args) error {
 	if err != nil {
 		return err
 	}
-	defer r.Close()
-	defer w.Close()
+	defer closeIO(r, w)
 
 	_ = dt // TODO
 
