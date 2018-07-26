@@ -17,12 +17,6 @@ func TestTcpundump(t *testing.T) {
 		fmt.Errorf(scenario)
 	}
 
-	scenario = "-w must be specified if `command` ([\"baz\"]) is given"
-	args = Args{Command: []string{"baz"}}
-	if Tcpundump(args).Error() != scenario {
-		fmt.Errorf(scenario)
-	}
-
 	scenario = "open non-exist-fie: no such file or directory"
 	args = Args{FileRead: "non-exist-fie"}
 	if Tcpundump(args).Error() != scenario {

@@ -28,11 +28,6 @@ func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 			args.Command)
 		return nil, nil, dt, err
 	}
-	if args.FileWrite == "" && len(args.Command) != 0 {
-		err := fmt.Errorf("-w must be specified if `command` (%q) is given",
-			args.Command)
-		return nil, nil, dt, err
-	}
 
 	r := io.ReadCloser(os.Stdin)
 	w := io.WriteCloser(os.Stdout)
