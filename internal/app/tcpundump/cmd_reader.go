@@ -4,6 +4,11 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"fmt"
+)
+
+const (
+	defaultBufSize = 4096
 )
 
 // an io.ReadCloser
@@ -11,6 +16,18 @@ type cmdReader struct {
 	cmdIn io.WriteCloser
 	cmdOut io.ReadCloser
 	cmdErr io.ReadCloser
+}
+
+func (cr *cmdReader) readWriteErr() {
+	p := make([]byte, defaultBufSize)
+
+	for {
+		n, err := cr.cmdErr.Read(p)
+		if err == io.EOF {
+			break
+		}
+		fmt.Fprint(os.Stderr, string(p[:n]))
+	}
 }
 
 func (cr *cmdReader) Read(p []byte) (int, error) {
@@ -56,6 +73,8 @@ func openCmdReader(command []string) (*cmdReader, error) {
 		cr.Close()
 		return cr, nil
 	}
+
+	go cr.readWriteErr()
 
 	return cr, nil
 }
