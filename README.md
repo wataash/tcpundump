@@ -25,14 +25,12 @@ tcpdump -r undumped.pcapng
 usage
 
 ```sh
-tcpundump
-    [-q] [--type {cisco | juniper | seil | tcpdump-x | tcpdump-xx}]
-    {
-        [-r <file>] [-w <file>]
-        | -w <file> [--] command ...
-    }
+synopsis
+tcpundump [-q] [--type <type>] [-r <file>] [-w <file>]
+tcpundump [-q] [--type <type>] [-w <file>] [--] command ...
+
+<type> := {cisco | juniper | seil | tcpdump-x | tcpdump-xx}
 
 -r, command: exclusive. if neigher specified, read from stdin
 -w: if not specified, write out to stdout.
-command: require -w
 ```
