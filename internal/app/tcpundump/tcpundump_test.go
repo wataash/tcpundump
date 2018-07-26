@@ -1,9 +1,8 @@
 package tcpundump
 
 import (
-	"fmt"
-	"testing"
-)
+		"testing"
+	)
 
 func TestTcpundump(t *testing.T) {
 	var args Args
@@ -14,13 +13,13 @@ func TestTcpundump(t *testing.T) {
 	scenario = "can't specify both `-r` and `command` ([\"baz\"])"
 	args = Args{FileRead: "foo", Command: []string{"baz"}}
 	if Tcpundump(args).Error() != scenario {
-		fmt.Errorf(scenario)
+		t.Errorf(scenario)
 	}
 
 	scenario = "open non-exist-fie: no such file or directory"
 	args = Args{FileRead: "non-exist-fie"}
 	if Tcpundump(args).Error() != scenario {
-		fmt.Errorf(scenario)
+		t.Errorf(scenario)
 	}
 
 	// test cmd_reader.go
