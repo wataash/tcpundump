@@ -23,6 +23,8 @@ func (cr *cmdReader) readWriteErr() {
 
 	for {
 		n, err := cr.cmdErr.Read(p)
+		// TODO: cr.Close() in closeArgs() may be faster than EOF.
+		//       err may be os.PathError or maybe already os.Exit()ed
 		if err == io.EOF {
 			break
 		}
