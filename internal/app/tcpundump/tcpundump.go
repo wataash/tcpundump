@@ -17,6 +17,7 @@ type Args struct {
 }
 
 // validate arguments and open reader and writer
+// must call closeArgs() after calling this
 func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 	dt, err := parseDumpType(args.DumpType)
 	if err != nil {
@@ -61,7 +62,7 @@ func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 }
 
 // must be deferred after openArgs()
-func closeIO(r io.ReadCloser, w io.WriteCloser) {
+func closeArgs(r io.ReadCloser, w io.WriteCloser) {
 	// don't close stdio otherwise testing will terminated
 	if r != os.Stdin {
 		_ = r.Close()
@@ -87,7 +88,7 @@ func Tcpundump(args Args) error {
 	if err != nil {
 		return err
 	}
-	defer closeIO(r, w)
+	defer closeArgs(r, w)
 
 	_ = dt // TODO
 
