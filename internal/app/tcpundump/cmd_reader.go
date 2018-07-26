@@ -70,7 +70,7 @@ func openCmdReader(command []string) (*cmdReader, error) {
 	err = cmd.Start()
 	if err != nil {
 		cr.Close()
-		return cr, nil
+		return cr, err
 	}
 
 	go cr.readWriteErr()
