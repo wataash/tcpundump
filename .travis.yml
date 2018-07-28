@@ -8,15 +8,17 @@ go:
 
 before_install:
   - go get -t -v ./...
+  - go get -u -v github.com/fzipp/gocyclo
   - go get -u -v golang.org/x/lint/golint
 
 script:
   # https://docs.travis-ci.com/user/customizing-the-build/#implementing-complex-build-steps
   - set -ev
-  #
   - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
   - golint ./...
   - scripts/gofmt.sh
+  - gocyclo ./           # always success
+  - gocyclo -over 15 ./  # fails if any go file excesses 15
   - scripts/cross_build.sh
 
 after_success:
