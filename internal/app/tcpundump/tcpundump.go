@@ -121,6 +121,7 @@ func Tcpundump(args Args) error {
 		}
 
 		dumped, err := undump(line, positions)
+		_ = err
 
 		n, err := w.Write(dumped)
 		if err != nil {
