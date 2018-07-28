@@ -3,14 +3,15 @@ package tcpundump
 import (
 	"errors"
 	"fmt"
-	"os"
 	"math"
+	"os"
 )
 
 // ----------------------------------------------------------------------------
 // type
 
 type dumpType float64
+
 // Assuming hex dump always appears as a two-digit bytes:
 //
 //   01 23 45 67 89 ab c
@@ -24,6 +25,7 @@ type dumpType float64
 //   ^  ^  ^  ^  ^  ^
 //   0  3  6  9  12 15
 type colByte uint8
+
 const colByteMax = math.MaxUint8
 
 var inferFailed = errors.New("infer failed")
@@ -35,14 +37,14 @@ var unreachable = errors.New("unreachable")
 
 // TODO: move to dump_type.go?
 const (
-	_                  dumpType = iota
+	_ dumpType = iota
 	dtCisco
 	dtJuniper
 	dtJuniper2
 	dtSeil
 	dtTcpdump_old_TODO
-	dtTcpdumpX          // -x
-	dtTcpdumpXX           // -X
+	dtTcpdumpX  // -x
+	dtTcpdumpXX // -X
 	dtUnknown
 )
 

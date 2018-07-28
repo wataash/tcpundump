@@ -1,8 +1,8 @@
 package tcpundump
 
 import (
-		"testing"
-	)
+	"testing"
+)
 
 func TestTcpundump(t *testing.T) {
 	var args Args

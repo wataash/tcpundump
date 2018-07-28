@@ -43,7 +43,7 @@ func openArgs(args Args) (io.ReadCloser, io.WriteCloser, dumpType, error) {
 
 	if args.FileWrite != "" {
 		w2, err := os.OpenFile(args.FileWrite,
-			os.O_WRONLY | os.O_CREATE | os.O_TRUNC, 0644)
+			os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 		if err != nil {
 			return nil, nil, dt, err
 		}

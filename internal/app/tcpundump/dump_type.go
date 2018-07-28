@@ -1,8 +1,8 @@
 package tcpundump
 
 import (
-	"regexp"
 	"fmt"
+	"regexp"
 )
 
 func parseDumpType(dumpType string) (dumpType, error) {

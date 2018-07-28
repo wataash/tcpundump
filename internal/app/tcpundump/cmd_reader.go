@@ -1,10 +1,10 @@
 package tcpundump
 
 import (
+	"fmt"
 	"io"
 	"os"
 	"os/exec"
-	"fmt"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 
 // an io.ReadCloser
 type cmdReader struct {
-	cmdIn io.WriteCloser
+	cmdIn  io.WriteCloser
 	cmdOut io.ReadCloser
 	cmdErr io.ReadCloser
 }
