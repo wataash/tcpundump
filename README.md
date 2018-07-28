@@ -43,3 +43,10 @@ tcpundump [-q] [--type <type>] [-w <file>] [--] command ...
 -r, command: exclusive. if neigher specified, read from stdin
 -w: if not specified, write out to stdout.
 ```
+
+## shell usage
+
+TODO: figure stdio
+TODO: screen shot
+tcpundump -w dump.pcapng -- bash -i
+TODO: also ssh?
