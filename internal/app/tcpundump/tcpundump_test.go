@@ -42,4 +42,12 @@ func TestTcpundump(t *testing.T) {
 	if fi.Size() != 0 {
 		t.Errorf(scenario)
 	}
+
+	scenario = "command's stderr goes tcpundump's one"
+	args = Args{FileWrite: "tmp.pcapng",
+		Command: []string{"sh", "-c", "echo foo 1>&2"}}
+	// TODO: capture stderr
+	if Tcpundump(args) != nil {
+		t.Errorf("unexpected error in scenario: %q", scenario)
+	}
 }
