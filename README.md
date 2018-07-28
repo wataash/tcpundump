@@ -1,8 +1,17 @@
 # tcpundump
 
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+<!--
+badge URLs copied from:
+https://shields.io/
+https://travis-ci.org/wataash/tcpundump
+https://codecov.io/gh/wataash/tcpundump/settings/badge
+https://goreportcard.com/report/github.com/wataash/tcpundump
+-->
+
+![GitHub](https://img.shields.io/github/license/wataash/tcpundump.svg)
 [![Build Status](https://travis-ci.org/wataash/tcpundump.svg?branch=master)](https://travis-ci.org/wataash/tcpundump)
 [![codecov](https://codecov.io/gh/wataash/tcpundump/branch/master/graph/badge.svg)](https://codecov.io/gh/wataash/tcpundump)
+[![Go Report Card](https://goreportcard.com/badge/github.com/wataash/tcpundump)](https://goreportcard.com/report/github.com/wataash/tcpundump)
 
 WIP
 
