@@ -13,7 +13,6 @@ before_install:
 
 script:
   # https://docs.travis-ci.com/user/customizing-the-build/#implementing-complex-build-steps
-  - set -ev
   - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
   - golint ./...
   - scripts/gofmt.sh
