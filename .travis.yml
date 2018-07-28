@@ -8,9 +8,14 @@ go:
 
 before_install:
   - go get -t -v ./...
+  - go get -u -v golang.org/x/lint/golint
 
 script:
+  # https://docs.travis-ci.com/user/customizing-the-build/#implementing-complex-build-steps
+  - set -ev
+  #
   - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
+  - golint ./...
   #
   - echo 'Test cross building...'
   # https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63
