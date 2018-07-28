@@ -28,9 +28,9 @@ type colByte uint8
 
 const colByteMax = math.MaxUint8
 
-var inferFailed = errors.New("infer failed")
-var invalidInput = errors.New("invalid input")
-var unreachable = errors.New("unreachable")
+var errInferFailed = errors.New("infer failed")
+var errInvalidInput = errors.New("invalid input")
+var errUnreachable = errors.New("unreachable")
 
 // ----------------------------------------------------------------------------
 // const
@@ -42,7 +42,6 @@ const (
 	dtJuniper
 	dtJuniper2
 	dtSeil
-	dtTcpdump_old_TODO
 	dtTcpdumpX  // -x
 	dtTcpdumpXX // -X
 	dtUnknown
@@ -82,7 +81,7 @@ func bugPanicUnknown(err error, line string) {
 }
 
 func bugPanicUnreachable(err error, line string) {
-	if err == unreachable {
+	if err == errUnreachable {
 		// Suppress a redundant error message
 		err = nil
 	}

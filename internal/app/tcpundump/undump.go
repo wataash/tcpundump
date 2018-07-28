@@ -5,10 +5,10 @@ import "strconv"
 // "00" -> 0
 // "0f" -> 15
 // "ff" -> 255
-// @error unreachable, strconv.ParseInt()'s error
+// @error errUnreachable, strconv.ParseInt()'s error
 func undumpByte(dump string) (byte, error) {
 	if len(dump) != 2 || !isHex(dump[0]) || !isHex(dump[1]) {
-		return 0, unreachable
+		return 0, errUnreachable
 	}
 
 	b, err := strconv.ParseUint(dump, 16, 8)
@@ -19,7 +19,7 @@ func undumpByte(dump string) (byte, error) {
 //   "  01 23 ab f "
 //      ^2 ^5 ^8
 //   => [0x01, 0x23, 0xab]
-// @error unreachable, strconv.ParseInt()'s error
+// @error errUnreachable, strconv.ParseInt()'s error
 func undump(line string, colsByte []colByte) ([]byte, error) {
 	undumped := make([]byte, 0, len(line)/2)
 

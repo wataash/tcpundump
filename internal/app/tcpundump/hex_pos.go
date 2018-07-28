@@ -25,7 +25,7 @@ func getColsByte(str string) []colByte {
 	var cols []colByte
 
 	if len(str) > colByteMax {
-		bugPanicUnreachable(unreachable, str)
+		bugPanicUnreachable(errUnreachable, str)
 	}
 	lenstr := colByte(len(str))
 
@@ -64,7 +64,7 @@ func getColsByte(str string) []colByte {
 //   ^0               ^ ^  ^ 17, 19, 22
 //   => [17 19 22]
 //
-// @error nil, unreachable
+// @error nil, errUnreachable
 func lineToColsByteSeil(line string) ([]colByte, error) {
 	if len(line) >= 56 {
 		// has ascii dump, remove it
@@ -76,7 +76,7 @@ func lineToColsByteSeil(line string) ([]colByte, error) {
 		17, 19, 22, 24, 27, 29, 32, 34, 37, 39, 42, 44, 47, 49, 52, 54}
 
 	if len(line) > colByteMax {
-		return []colByte{}, unreachable
+		return []colByte{}, errUnreachable
 	}
 	length := colByte(len(line))
 
@@ -86,7 +86,7 @@ func lineToColsByteSeil(line string) ([]colByte, error) {
 		}
 	}
 
-	return []colByte{}, unreachable
+	return []colByte{}, errUnreachable
 }
 
 func lineToHexPositionsTcpdumpX(line string) ([]colByte, error) {
@@ -100,8 +100,8 @@ func lineToColsByte(line string) ([]colByte, error) {
 	switch err {
 	case nil:
 		break
-	case inferFailed:
-		return []colByte{}, inferFailed
+	case errInferFailed:
+		return []colByte{}, errInferFailed
 	default:
 		bugPanicUnknown(err, line)
 	}

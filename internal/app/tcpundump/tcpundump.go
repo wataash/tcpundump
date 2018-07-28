@@ -1,4 +1,5 @@
-// Converts hex-dump output of tcpdump to pcap.
+// Package tcpundump provides the converter, which reads a hex-dump output of
+// tcpdump then convert it pcap.
 package tcpundump
 
 import (
@@ -8,6 +9,7 @@ import (
 	"os"
 )
 
+// Args is arguments to Tcpundump().  See tcpundump_test.go for examples.
 type Args struct {
 	Quiet     bool
 	DumpType  string
@@ -82,7 +84,7 @@ func readLine(rd io.Reader) ([]byte, error) {
 	return r.ReadBytes('\n')
 }
 
-// --type juniper -r test/data/tcpdump_seil.txt -w dump.pcapng -- ssh -p 10022 juniper
+// Tcpundump is the main entry of tcpundump.
 func Tcpundump(args Args) error {
 	r, w, dt, err := openArgs(args)
 	if err != nil {
@@ -111,10 +113,10 @@ func Tcpundump(args Args) error {
 		switch err {
 		case nil:
 			break
-		case inferFailed:
+		case errInferFailed:
 			continue
 		default:
-			bugPanic(nil, "unreachable code executed while processing: %q",
+			bugPanic(nil, "errUnreachable code executed while processing: %q",
 				line)
 		}
 
