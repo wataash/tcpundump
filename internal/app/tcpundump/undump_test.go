@@ -1,3 +1,7 @@
+// Copyright (c) 2018, tcpundump authors
+// All rights reserved.
+// Licensed under BSD 2-Clause License.
+
 package tcpundump
 
 import "fmt"

@@ -1,3 +1,7 @@
+// Copyright (c) 2018, tcpundump authors
+// All rights reserved.
+// Licensed under BSD 2-Clause License.
+
 // Package tcpundump provides the converter, which reads a hex-dump output of
 // tcpdump then convert it pcap.
 package tcpundump
