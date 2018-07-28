@@ -16,6 +16,7 @@ script:
   #
   - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
   - golint ./...
+  - scripts/gofmt.sh
   - scripts/cross_build.sh
 
 after_success:
