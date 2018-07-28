@@ -5,6 +5,7 @@
 package tcpundump
 
 import (
+	"os"
 	"testing"
 )
 
@@ -28,6 +29,17 @@ func TestTcpundump(t *testing.T) {
 
 	// test cmd_reader.go
 
+	scenario = "string \"foo\" doesn't contain hex dump, " +
+		"consequently creates zero byte file"
 	args = Args{FileWrite: "tmp.pcapng", Command: []string{"echo", "foo"}}
-	Tcpundump(args)
+	if Tcpundump(args) != nil {
+		t.Errorf("unexpected error in scenario: %q", scenario)
+	}
+	fi, err := os.Stat("tmp.pcapng")
+	if err != nil {
+		t.Errorf("unexpected error while os.Stat in scenario: %q", scenario)
+	}
+	if fi.Size() != 0 {
+		t.Errorf(scenario)
+	}
 }
